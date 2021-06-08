@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% block head %}
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css')}}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  {% endblock %}
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>PhysicoPy</h1>
+    <h1>All solution Withing Seconds</h1>
+  </div>
+</header>
+
+<div class="bg-dark">
+  <div class="container">
+    <div class="mobile-nav">
+      <button class="mobile-btn" onclick="toggleMenu(1)">Menu</button>
+    </div>
+    <ul class="nav" id="main-nav">
+      <li class="close-item">
+        <button class="mobile-btn" onclick="toggleMenu(0)">Close &times;</button>
+      </li>
+      <li class="nav-item">
+        <a href="/home" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="#!" class="nav-link">
+          Physics <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dp-menu level-1">
+          <li class="dp-item">
+            <a href="#!" class="dp-link">
+              Basic Physics <i class="fa fa-caret-right"></i>
+            </a>
+            <ul class="dp-menu level-2">
+              <li class="dp-item">
+                <a href="/changeincoordinate" class="dp-link">Change in Coordinate System</a>
+              </li>
+              <li class="dp-item">
+                <a href="#!" class="dp-link">Laws of Motion</a>
+              </li>
+            </ul>
+          </li>
+          
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% block page_content %}
+{% endblock %}
+<script type="text/javascript">
+	function toggleMenu(id) {
+  console.log(id);
+  let nav = document.getElementById("main-nav");
+  if (id === 1) {
+    nav.style.left = "0%";
+  } else {
+    nav.style.left = "-100%";
+  }
+}
+
+</script>
+
+
+</body>
+</html>

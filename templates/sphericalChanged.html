@@ -1,0 +1,38 @@
+{% extends "cartesianChange.html" %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+
+{% block content1 %}
+<div class="d-flex justify-content-center">
+	<h2>
+		<div>First Calculate \(r\)</div>
+		<div>
+\(
+r = \sqrt{x^2+y^2+z^2}\\
+r = \sqrt{ {{x}}^2+{{y}}^2+{{z}}^2 }\\
+r = {{ r }}\\
+\)
+</div>
+<hr>
+<div>
+\(
+\theta = \cos^{-1}(\frac{z}{r})\\
+\theta = \cos^{-1}(\frac{ {{z}} }{ {{ r }} })\\
+\theta = {{ theta }}\\
+\)</div>
+<hr>
+<div>
+	\(
+\phi = \tan^{-1}(\frac{y}{x})\\
+\phi = \tan^{-1}(\frac{ {{ y }} }{ {{x}} })\\
+\phi = {{ phi }}
+\)
+</div>
+
+</h2>
+</div>
+{% endblock %}

@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 numpy = "*"
+flask = "*"
+python-dotenv = "*"
+python-markdown-math = "*"
 
 [dev-packages]
 

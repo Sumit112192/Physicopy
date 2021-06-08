@@ -5,3 +5,4 @@ class Charge():
 		self.magnitude = magnitude
 		self.coordinate = np.array(coordinate)
 
+
