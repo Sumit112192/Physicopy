@@ -1,4 +1,4 @@
-import dimensions 
+import physics.dimensions 
 
 
 def dimensionSearch(word):

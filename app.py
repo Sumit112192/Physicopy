@@ -1,6 +1,11 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
+
 from physics.coordinateSystem import SphericalCoordinatesFromPoint
 from physics.approximate import convertToMultipleOfPi
+import physics.quantities as quantities
+
+from search.showSimilarWord import similarQuantity
+import time
 app = Flask(__name__)
 
 @app.route('/')
@@ -15,6 +20,25 @@ def changeInCoordinate():
 def cartesianChange():
 	return render_template('cartesianChange.html')
 
+@app.route('/dimension')
+def dimension():
+
+	return render_template('dimension.html')
+
+@app.route("/search/<string:box>")
+def process(box):
+	query = request.args.get('query')
+	words = similarQuantity(query)
+	while(len(words)==0):
+		time.sleep(1)
+		query = request.args.get('query')
+		words = similarQuantity(query)
+	print(words)
+	suggestions = []
+	for word in words:
+		suggestions.append({'value':word , 'data':word})
+	print(suggestions)
+	return jsonify({"suggestions":suggestions})
 @app.route('/sphericalchanged', methods=['GET', 'POST'])
 def sphericalChanged():
 	if request.method == "POST":

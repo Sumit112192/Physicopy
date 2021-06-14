@@ -1,0 +1,15 @@
+
+
+.theme {
+  padding:32px 0 32px 0;
+}
+
+.working-area {
+  width: 90%;
+  height: 50%;
+  margin: 0 auto;
+  background-color: rgba(142,36,170,0.3);
+  padding: 16px;
+  border-radius: 8px;
+}
+

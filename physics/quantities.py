@@ -1,10 +1,10 @@
 quantity = ["displacement", "mass", "time", "area", "volume", "density", "velocity",
-"acceleration", "force", "work", "energy", "power", "momentum", "gravitational_constant", 
-"plane_angle", "angular_velocity", "angular_acceleration", "angular_momentum", "moment_of_inertia",
-"angular_frequency", "period", "young_modulus", "bulk_modulus", "shear_modulus", "surface_tension",
-"coefficient_of_viscosity", "viscosity", "pressure", "wavelength", "intensity_of_wave", "temperature",
-"specific_heat_capacity", "stefan_constant", "heat", "thermal_conductivity", "current", 
-"electromotive_force", "emf", "resistance", "charge", "current_density", "electrical_conductivity",
-"dielectric_constant", "electric_dipole_moment", "dipole", "electric_field", "potential", "voltage",
-"electric_flux", "flux", "capacitance", "permittivity", "permeability", "magnetic_field", "magnetic_flux", 
-"magnetic_dipole_moment", "inductance", "amount_of_substance", "luminous_intensity", "solid_angle", "velocity", "distance"]
+"acceleration", "force", "work", "energy", "power", "momentum", "gravitational constant", 
+"plane angle", "angular velocity", "angular acceleration", "angular momentum", "moment of inertia","inertia"
+"angular frequency", "period", "young modulus", "bulk modulus", "shear modulus", "surface tension",
+"coefficient of viscosity", "viscosity", "pressure", "wavelength", "intensity of wave", "temperature",
+"specific heat capacity", "stefan constant", "heat", "thermal conductivity", "current", 
+"electromotive force", "emf", "resistance", "charge", "current density", "electrical conductivity",
+"dielectric constant", "electric dipole moment", "dipole", "electric field", "potential", "voltage",
+"electric flux", "flux", "capacitance", "permittivity", "permeability", "magnetic field", "magnetic flux", 
+"magnetic dipole moment", "inductance", "amount of substance", "luminous intensity", "solid angle", "velocity", "distance"]
