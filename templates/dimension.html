@@ -7,28 +7,10 @@
 {% endblock %}
 
 {% block page_content %}
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-12'>
-      <h1> Physical Quantities</h1>
-      <p class='lead'>You can search here dimensions of any specific physical quantity</p>
-    </div>
-  </div>
-  <div class='row'>
-    <div class='col-md-6'>
-      <div class='search-box'>
-        <form class='search-form'>
-          <input class='form-control' placeholder='ex: length, mass, time, displacement, velocity, etc.' type='text'>
-          <button class='btn btn-link search-btn'>
-            <i class='glyphicon glyphicon-search'></i>
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
+<div class="container">
+Dimension:
+  <input type="text" name="names" id="autocomplete1"/>
 </div>
-{% block content %}
-{% endblock %}
   <script>
   $('#autocomplete1').autocomplete({
       serviceUrl: '/search/names',
@@ -39,5 +21,4 @@
   });
 
   </script>
-
   {% endblock %}
