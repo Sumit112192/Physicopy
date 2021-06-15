@@ -3,11 +3,17 @@ from flask import Flask, request, render_template, jsonify
 from physics.coordinateSystem import SphericalCoordinatesFromPoint
 from physics.approximate import convertToMultipleOfPi
 import physics.quantities as quantities
-
 from search.showSimilarWord import similarQuantity
 import time
 app = Flask(__name__)
 
+
+headings = ("Quantity","dimensions")
+data = (
+    ("length","1,0,0,0,0,0,0"),
+    ("mass","0,1,0,0,0,0,0"),
+    ("time","0,0,1,0,0,0,0")
+)
 @app.route('/')
 @app.route('/home')
 def index():
@@ -25,6 +31,9 @@ def dimension():
 
 	return render_template('dimension.html')
 
+@app.route('/dimension/table')
+def table():
+    return render_template('table.html',headings = headings,data=data)
 @app.route("/search/<string:box>")
 def process(box):
 	query = request.args.get('query')

@@ -1,0 +1,25 @@
+{% extends "dimension.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <tr class="table__header">
+        {% for header in headings %}
+        <th>{{ header }}</th>
+        {% endfor %}
+      </tr>
+      {% for row in data %}
+      <tr>
+        {% for cell in row %}
+        <td>{{ cell }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}
