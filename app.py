@@ -1,13 +1,20 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, redirect
 
 from physics.coordinateSystem import SphericalCoordinatesFromPoint
 from physics.approximate import convertToMultipleOfPi
 import physics.quantities as quantities
-
+import physics.dimensions as dimensions
 from search.showSimilarWord import similarQuantity
 import time
 app = Flask(__name__)
 
+
+
+data = (
+	("length","1,0,0,0,0,0,0"),
+	("mass","0,1,0,0,0,0,0"),
+	("time","0,0,1,0,0,0,0")
+)
 @app.route('/')
 @app.route('/home')
 def index():
@@ -22,23 +29,21 @@ def cartesianChange():
 
 @app.route('/dimension')
 def dimension():
+	data = quantities.quantity
+	return render_template('dimension.html', data = data)
 
-	return render_template('dimension.html')
+@app.route('/dimension/table', methods=['GET', 'POST'])
+def dimensionTable():
+	if request.method == "POST":
+		data = request.form.get('quantity')
+		headings = ("Quantity","dimensions")
+		data = [[data, dimensions.dimensions[data]]]
+		print(data)
+		return render_template('table.html',headings = headings,data=data)
+	return redirect('/dimension')
 
-@app.route("/search/<string:box>")
-def process(box):
-	query = request.args.get('query')
-	words = similarQuantity(query)
-	while(len(words)==0):
-		time.sleep(1)
-		query = request.args.get('query')
-		words = similarQuantity(query)
-	print(words)
-	suggestions = []
-	for word in words:
-		suggestions.append({'value':word , 'data':word})
-	print(suggestions)
-	return jsonify({"suggestions":suggestions})
+
+
 @app.route('/sphericalchanged', methods=['GET', 'POST'])
 def sphericalChanged():
 	if request.method == "POST":
