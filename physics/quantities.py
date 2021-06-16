@@ -1,10 +1,12 @@
-quantity = ["displacement", "mass", "time", "area", "volume", "density", "velocity","length",
-"acceleration", "force", "work", "energy", "power", "momentum", "gravitational constant", 
-"plane angle", "angular velocity", "angular acceleration", "angular momentum", "moment of inertia","inertia"
-"angular frequency", "period", "young modulus", "bulk modulus", "shear modulus", "surface tension",
-"coefficient of viscosity", "viscosity", "pressure", "wavelength", "intensity of wave", "temperature",
-"specific heat capacity", "stefan constant", "heat", "thermal conductivity", "current", 
-"electromotive force", "emf", "resistance", "charge", "current density", "electrical conductivity",
-"dielectric constant", "electric dipole moment", "electric field", "potential", "voltage",
-"electric flux", "flux", "capacitance", "permittivity", "permeability", "magnetic field", "magnetic flux", 
-"magnetic dipole moment", "inductance", "amount of substance", "luminous intensity", "solid angle", "velocity", "distance"]
+quantity = ['acceleration', 'amount of substance', 'angular acceleration', 
+'angular momentum', 'angular velocity', 'area', 'bulk modulus', 'capacitance', 
+'charge', 'coefficient of viscosity', 'current', 'current density', 'density', 
+'dielectric constant', 'displacement', 'distance', 'electric dipole moment', 
+'electric field', 'electric flux', 'electrical conductivity', 'electromotive force', 
+'emf', 'energy', 'flux', 'force', 'gravitational constant', 'heat', 'inductance', 
+'inertiaangular frequency', 'intensity of wave', 'length', 'luminous intensity', 
+'magnetic dipole moment', 'magnetic field', 'magnetic flux', 'mass', 'moment of inertia', 
+'momentum', 'period', 'permeability', 'permittivity', 'plane angle', 'potential', 'power', 
+'pressure', 'resistance', 'shear modulus', 'solid angle', 'specific heat capacity', 
+'stefan constant', 'surface tension', 'temperature', 'thermal conductivity', 'time', 
+'velocity', 'viscosity', 'voltage', 'volume', 'wavelength', 'work', 'young modulus']
