@@ -29,21 +29,26 @@ def dimension():
 @app.route('/dimension/table', methods=['GET', 'POST'])
 def dimensionTable():
 	if request.method == "POST":
+		headings = ("Quantity", "dimensions")
 		data = request.form.get('quantity')
-		try:
-			headings = ("Quantity","dimensions")
-			data=data.strip(" ")
-			row = [[data, dimensions.dimensions[data]]]
-			
-			return render_template('table.html',headings = headings,row = row, suggestion = quantities.quantity)
-		except:
-			print(data)
-			quantity = similarQuantity(data)
-			return render_template('didYouMean.html', quantity= quantity, suggestion = quantities.quantity)
-	return redirect('/dimension')
+		showAll = request.form.get("showAll")
+		print(showAll)
+		if showAll:
+			row = []
+			for data in quantities.quantity:
+				row.append([data, dimensions.dimensions[data]])
+			return render_template('table.html', headings=headings, row=row, suggestion=quantities.quantity)
+		else:
+			try:
+				data = data.strip(" ")
+				row = [[data, dimensions.dimensions[data]]]
 
-
-
+				return render_template('table.html', headings=headings, row=row, suggestion=quantities.quantity)
+			except:
+				print(data)
+				quantity = similarQuantity(data)
+				return render_template('didYouMean.html', quantity=quantity, suggestion=quantities.quantity)
+		return redirect('/dimension')
 @app.route('/sphericalchanged', methods=['GET', 'POST'])
 def sphericalChanged():
 	if request.method == "POST":
