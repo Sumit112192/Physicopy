@@ -6,7 +6,11 @@ import physics.quantities as quantities
 import physics.dimensions as dimensions
 from search.showSimilarWord import similarQuantity
 import time
+import os
 app = Flask(__name__)
+
+
+
 
 
 @app.route('/')
@@ -24,7 +28,7 @@ def cartesianChange():
 @app.route('/dimension')
 def dimension():
 	data = quantities.quantity
-	return render_template('dimension.html', suggestion = data)
+	return render_template('dimension.html', suggestion = data, toggle = 1)
 
 @app.route('/dimension/table', methods=['GET', 'POST'])
 def dimensionTable():
@@ -32,22 +36,23 @@ def dimensionTable():
 		headings = ("Quantity", "dimensions")
 		data = request.form.get('quantity')
 		showAll = request.form.get("showAll")
-		print(showAll)
-		if showAll:
+		if showAll and data == "":
 			row = []
 			for data in quantities.quantity:
 				row.append([data, dimensions.dimensions[data]])
-			return render_template('table.html', headings=headings, row=row, suggestion=quantities.quantity)
+			return render_template('table.html', headings=headings, row=row, suggestion=quantities.quantity, toggle = 0)
+		elif showAll == None  and data=="":
+			return redirect('/dimension')
 		else:
 			try:
 				data = data.strip(" ")
 				row = [[data, dimensions.dimensions[data]]]
 
-				return render_template('table.html', headings=headings, row=row, suggestion=quantities.quantity)
+				return render_template('table.html', headings=headings, row=row, suggestion=quantities.quantity,toggle = 1)
 			except:
 				print(data)
 				quantity = similarQuantity(data)
-				return render_template('didYouMean.html', quantity=quantity, suggestion=quantities.quantity)
+				return render_template('didYouMean.html', quantity=quantity, suggestion=quantities.quantity, toggle=1)
 		return redirect('/dimension')
 @app.route('/sphericalchanged', methods=['GET', 'POST'])
 def sphericalChanged():

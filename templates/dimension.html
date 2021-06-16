@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='toggle.css')}}">
 {{ super() }}
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">  
     </script>  
     
@@ -45,14 +47,30 @@
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 </svg>
 </button>
-<br>
-<label class="switch">
-  <input type="checkbox" name="showAll" checked>
-  <span class="slider round"></span>
-</label>
-</form>
-      </div>
 
+  <label class="form-check-label ml-5" for="showAll">
+    Show All
+  </label>  
+   <div class="toggle-button-cover">
+
+        <div class="button r" id="button-9">
+          {% if toggle == 1 %}
+          <input type="checkbox" class="checkbox" name="showAll" id="showAll" onChange="
+          this.form.submit()">
+          {% else %}
+          <input type="checkbox" class="checkbox" name="showAll" id="showAll" checked onChange="
+          this.form.submit()">
+          {% endif %}
+          <div class="knobs"></div>
+          <div class="layer"></div>
+
+        </div>
+      
+    </div>
+
+</form>
+</div>
+ 
 {% block content %}
 {% endblock %}
 
