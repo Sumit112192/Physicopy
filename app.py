@@ -9,12 +9,6 @@ import time
 app = Flask(__name__)
 
 
-
-data = (
-	("length","1,0,0,0,0,0,0"),
-	("mass","0,1,0,0,0,0,0"),
-	("time","0,0,1,0,0,0,0")
-)
 @app.route('/')
 @app.route('/home')
 def index():
@@ -30,16 +24,22 @@ def cartesianChange():
 @app.route('/dimension')
 def dimension():
 	data = quantities.quantity
-	return render_template('dimension.html', data = data)
+	return render_template('dimension.html', suggestion = data)
 
 @app.route('/dimension/table', methods=['GET', 'POST'])
 def dimensionTable():
 	if request.method == "POST":
 		data = request.form.get('quantity')
-		headings = ("Quantity","dimensions")
-		data = [[data, dimensions.dimensions[data]]]
-		print(data)
-		return render_template('table.html',headings = headings,data=data)
+		try:
+			headings = ("Quantity","dimensions")
+			data=data.strip(" ")
+			row = [[data, dimensions.dimensions[data]]]
+			
+			return render_template('table.html',headings = headings,row = row, suggestion = quantities.quantity)
+		except:
+			print(data)
+			quantity = similarQuantity(data)
+			return render_template('didYouMean.html', quantity= quantity, suggestion = quantities.quantity)
 	return redirect('/dimension')
 
 

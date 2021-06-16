@@ -10,6 +10,20 @@
     
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
         rel="stylesheet" type="text/css" /> 
+       <script>
+  $( function() {
+    var availableTags = [
+        {% for suggestion in suggestion %}
+            "{{ suggestion }}",
+        {% endfor %}
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+
+
     
 {% endblock %}
 {% block page_content %}
@@ -34,19 +48,6 @@
       </div>
 {% block content %}
 {% endblock %}
-
- <script>
-  $( function() {
-    var availableTags = [
-        {% for data in data %}
-            "{{ data }}",
-        {% endfor %}
-    ];
-    $( "#tags" ).autocomplete({
-      source: availableTags
-    });
-  } );
-  </script>
 
 
   {% endblock %}

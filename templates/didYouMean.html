@@ -1,0 +1,33 @@
+{% extends "dimension.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="container" id="quant">
+  <form method="POST" action="{{ url_for('dimensionTable')}}" name="myform">
+    <input type="hidden" name="quantity" id="quantity">
+  
+    {% if quantity %}
+    <p>did you mean
+  {% for quantity in quantity %}
+
+  <a href="javascript: submitform(' {{ quantity }} ')">{{ quantity }}</a>
+
+  {% endfor %}
+  ?</p>
+  {% else %}
+  <p>No records found</p>
+  {% endif %}
+  
+</form>
+</div>
+
+<script type="text/javascript">
+function submitform(quantity)
+{
+  document.getElementById("quantity").value = quantity; 
+  document.forms["myform"].submit();
+}
+</script>
+{% endblock %}
