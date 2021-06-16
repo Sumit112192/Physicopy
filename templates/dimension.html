@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 {% endblock %}
 {% block page_content %}
+
 <div class='container'>
   <div class='row'>
     <div class='col-md-12'>
@@ -27,9 +28,12 @@
       </div>
     </div>
   </div>
+
+<div class="container">
+Dimension:
+  <input type="text" name="names" id="autocomplete1"/>
+
 </div>
-{% block content %}
-{% endblock %}
   <script>
   $('#autocomplete1').autocomplete({
       serviceUrl: '/search/names',
@@ -40,5 +44,4 @@
   });
 
   </script>
-
   {% endblock %}

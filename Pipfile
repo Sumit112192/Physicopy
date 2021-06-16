@@ -8,7 +8,6 @@ numpy = "*"
 flask = "*"
 python-dotenv = "*"
 python-markdown-math = "*"
-flask-bourbon = "*"
 
 [dev-packages]
 
