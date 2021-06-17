@@ -1,2 +1,2 @@
 # Physicopy
-[physicopy.pythonanywhere.com](physicopy.pythonanywhere.com)
+[http://physicopy.pythonanywhere.com/](http://physicopy.pythonanywhere.com/)
