@@ -36,12 +36,13 @@ def dimensionTable():
 		headings = ("Quantity", "dimensions")
 		data = request.form.get('quantity')
 		showAll = request.form.get("showAll")
-		if showAll and data == "":
+		print(showAll)
+		if showAll == "yes" and data == "":
 			row = []
 			for data in quantities.quantity:
 				row.append([data, dimensions.dimensions[data]])
 			return render_template('table.html', headings=headings, row=row, suggestion=quantities.quantity, toggle = 0)
-		elif showAll == None  and data=="":
+		elif showAll == "no"  and data=="":
 			return redirect('/dimension')
 		else:
 			try:

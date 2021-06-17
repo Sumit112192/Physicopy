@@ -48,31 +48,39 @@
 </svg>
 </button>
 
-  <label class="form-check-label ml-3" for="showAll">
+
+  <label class="ml-3 mr-3">
     Show All
-  </label>  
-   <div class="toggle-button-cover">
 
-        <div class="button r" id="button-9">
-          {% if toggle == 1 %}
-          <input type="checkbox" class="checkbox" name="showAll" id="showAll" onChange="
-          this.form.submit()">
-          {% else %}
-          <input type="checkbox" class="checkbox" name="showAll" id="showAll" checked onChange="
-          this.form.submit()">
-          {% endif %}
-          <div class="knobs"></div>
-          <div class="layer"></div>
-
-        </div>
-      
-    </div>
-
+  {% if toggle == 1 %}
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-outline-success ml-2" >
+    <input type="radio" name="showAll" id="option1" value="yes" autocomplete="off" onChange="
+          this.form.submit()"> Yes
+  </label>
+  <label class="btn btn-outline-danger active">
+    <input type="radio" name="showAll" id="option2" value = "no" checked autocomplete="off" checked onChange="this.form.submit()"> No
+  </label>
+</div>
+{% elif toggle == 0 %}
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-outline-success active">
+    <input type="radio" name="showAll" id="option1" value="yes" autocomplete="off" onChange="
+          this.form.submit()"> Yes
+  </label>
+  <label class="btn btn-outline-danger">
+    <input type="radio" name="showAll" id="option2" value="no" autocomplete="off" onChange="
+          this.form.submit()"> No
+  </label>
+</div>
+{% endif %}
+</label>
 </form>
 </div>
- 
+ <div class="container">
+  <br>
 {% block content %}
 {% endblock %}
-
+</div>
 
   {% endblock %}

@@ -4,7 +4,6 @@
   {% block head %}
 	<title></title>
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css')}}">
 
    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
@@ -30,60 +29,60 @@ MathJax.Hub.Config({
   {% endblock %}
 </head>
 <body>
-<header>
-  <div class="container">
-    <h1>PhysicoPy</h1>
-    <h1>All solution Withing Seconds</h1>
-  </div>
-</header>
 
-<div class="bg-dark">
-  <div class="container">
-    <div class="mobile-nav">
-      <button class="mobile-btn" onclick="toggleMenu(1)">Menu</button>
-    </div>
-    <ul class="nav" id="main-nav">
-      <li class="nav-item">
-        <a href="/home" class="nav-link">Home</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Physicopy</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a href="#!" class="nav-link">
-          Physics <i class="fa fa-caret-down"></i>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Physics
         </a>
-        <ul class="dp-menu level-1">
-          <li class="dp-item">
-            <a href="#!" class="dp-link">
-              Basic Physics <i class="fa fa-caret-right"></i>
-            </a>
-            <ul class="dp-menu level-2">
-              <li class="dp-item">
-                <a href="/changeincoordinate" class="dp-link">Change in Coordinate System</a>
-              </li>
-              <li class="dp-item">
-                <a href="/dimension" class="dp-link">Search Dimensions</a>
-              </li>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="/cartesianchange">Coordinate Change</a></li>
+          <li class="dropdown-submenu">
+            <a class="dropdown-item dropdown-toggle" href="#">Dimensional Analysis</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="\dimension">Search dimensions</a></li>
+
+
+
+          
             </ul>
           </li>
-          
         </ul>
       </li>
     </ul>
   </div>
-</div>
+</nav>
 
+<div class="container">
+  <hr>
 {% block page_content %}
 {% endblock %}
+</div>
 <script type="text/javascript">
-	function toggleMenu(id) {
-  console.log(id);
-  let nav = document.getElementById("main-nav");
-  if (id === 1) {
-    nav.style.left = "0%";
-  } else {
-    nav.style.left = "-100%";
+	$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+  if (!$(this).next().hasClass('show')) {
+    $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
   }
-}
+  var $subMenu = $(this).next('.dropdown-menu');
+  $subMenu.toggleClass('show');
 
+
+  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+    $('.dropdown-submenu .show').removeClass('show');
+  });
+
+
+  return false;
+});
 </script>
 
 
