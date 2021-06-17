@@ -33,10 +33,10 @@ def dimension():
 @app.route('/dimension/table', methods=['GET', 'POST'])
 def dimensionTable():
 	if request.method == "POST":
-		headings = ("Quantity", "dimensions")
+		headings = ("Quantity", "Dimensions")
 		data = request.form.get('quantity')
+		data = data.lower()
 		showAll = request.form.get("showAll")
-		print(showAll)
 		if showAll == "yes" and data == "":
 			row = []
 			for data in quantities.quantity:
@@ -51,7 +51,6 @@ def dimensionTable():
 
 				return render_template('table.html', headings=headings, row=row, suggestion=quantities.quantity,toggle = 1)
 			except:
-				print(data)
 				quantity = similarQuantity(data)
 				return render_template('didYouMean.html', quantity=quantity, suggestion=quantities.quantity, toggle=1)
 		return redirect('/dimension')
