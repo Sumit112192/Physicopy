@@ -72,5 +72,8 @@ def sphericalChanged():
 
 		return render_template("sphericalChanged.html",x=x, y=y, z=z, r=r, theta=theta, phi=phi, to=to)
 	return render_template("cartesianChange.html")
+@app.route('/aboutUs')
+def aboutUs():
+	return render_template('aboutUs.html')
 if __name__ == "__main__":
 	app.run(debug=True)
